@@ -6,7 +6,7 @@ fastReruns = true\n\
 \n\
 [theme]\n\
 base=dark\n\
-primaryColor = #b27eff\n\
+primaryColor = violet\n\
 \n\
 [server]\n\
 headless = true\n\
