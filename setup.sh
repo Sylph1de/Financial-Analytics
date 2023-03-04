@@ -1,3 +1,5 @@
+mkdir -p ~/.streamlit/
+
 echo "\
 [runner]\n\
 fastReruns = true\n\
