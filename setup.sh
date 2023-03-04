@@ -5,7 +5,7 @@ echo "\
 fastReruns = true\n\
 \n\
 [theme]\n\
-base="dark"\n\
+base=dark\n\
 primaryColor = #b27eff\n\
 \n\
 [server]\n\
