@@ -2,3 +2,5 @@ test.py
 Pipfile
 Pipfile.lock
 __pycache__
+.env
+run.bat
