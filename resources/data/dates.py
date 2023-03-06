@@ -13,7 +13,7 @@ def get_dates():
     current_year = current_date.year
     previous_year = current_year - 1
     current_month = current_date.month
-    previous_month = current_month - 1 if current_month != 1 else 12
+    previous_month = (current_date - timedelta(months=1)).month
     current_day = current_date.day
     previous_day = previous_date.day
 
