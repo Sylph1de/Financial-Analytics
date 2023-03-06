@@ -4,7 +4,7 @@ from zoneinfo import ZoneInfo
 
 
 def get_dates():
-  tz = ZoneInfo('America/Buenos_Aires')
+  tz = ZoneInfo('America/New_York')
 
   class Dates:
 
