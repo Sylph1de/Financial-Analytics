@@ -20,8 +20,8 @@ def get_spending(parsed_df):
   delta_month_spent = current_month_spent - previous_month_spent
 
   # ? Daily spending
-  previous_day_spent = parsed_df[Masks.previous_daily_mask].shape[0]
-  current_day_spent = parsed_df[Masks.current_daily_mask].shape[0]
+  previous_day_spent = parsed_df[Masks.previous_daily_mask].Gasto.sum()
+  current_day_spent = parsed_df[Masks.current_daily_mask].Gasto.sum()
   delta_day_spent = current_day_spent - previous_day_spent
 
   columns = st.columns(3)
