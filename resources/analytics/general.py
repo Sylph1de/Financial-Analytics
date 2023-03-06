@@ -30,7 +30,7 @@ def get_general(__df):
     current_monthly_income_mean = current_monthly_income_mean.groupby(current_monthly_income_mean.Fecha.dt.month).Ingreso.sum().mean()
 
     current_monthly_spent_mean = __df[Masks.current_yearly_mask]
-    current_monthly_spent_mean = current_monthly_spent_mean.groupby(current_monthly_income_mean.Fecha.dt.month).Gasto.sum().mean()
+    current_monthly_spent_mean = current_monthly_spent_mean.groupby(current_monthly_spent_mean.Fecha.dt.month).Gasto.sum().mean()
 
     columns = st.columns(2)
     with columns[0]:
