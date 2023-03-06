@@ -19,7 +19,9 @@ def notify(container, mode: str, **kwargs):
 
 
 def append_row(container, row):
-  from resources.data.main import sheet
+  from resources.tools import get_sheet
+
+  sheet = get_sheet()
 
   try:
     sheet.append_row(row, value_input_option='USER_ENTERED')

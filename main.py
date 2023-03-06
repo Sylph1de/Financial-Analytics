@@ -33,7 +33,6 @@ df = pd.DataFrame(records)
 # ? TRANSFORMATION
 df.Gasto = df.Gasto.astype(float).apply(lambda x: round(x, 2))
 df.Ingreso = df.Ingreso.astype(float).apply(lambda x: round(x, 2))
-# st.title(df.Fecha[df.Fecha.str.contains("'")].tolist())
 
 df.Fecha = pd.to_datetime(df.Fecha, format='%d/%m/%Y')
 
