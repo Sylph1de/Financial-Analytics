@@ -19,7 +19,7 @@ def notify(container, mode: str, **kwargs):
 
 
 def append_row(container, row):
-  from resources.tools import get_sheet
+  from resources.utils import get_sheet
 
   sheet = get_sheet()
 
