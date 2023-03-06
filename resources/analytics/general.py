@@ -31,7 +31,6 @@ def get_general(__df):
 
     current_monthly_spent_mean = __df[Masks.current_yearly_mask]
     current_monthly_spent_mean = current_monthly_spent_mean.groupby('Fecha').Gasto.sum().mean()
-    st.title(sum(__df.Gasto.tolist()))
 
     columns = st.columns(2)
     with columns[0]:
