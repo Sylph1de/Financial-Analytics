@@ -10,8 +10,8 @@ from resources.analytics.ant_spending import get_ants
 from resources.analytics.general import get_general
 from resources.analytics.income import get_income
 from resources.analytics.spending import get_spending
-from resources.data.main import df
 from resources.full_view.full_view import get_full_view
+from resources.utils import get_sheet
 
 load_dotenv()
 filterwarnings('ignore')
@@ -27,7 +27,9 @@ st.set_page_config(
         "About": 'Sheet:\n'+getenv('SHEET_URL'),
     },
 )
-
+sheet = get_sheet()
+records = sheet.get_all_records()
+df = pd.DataFrame(records)
 # ? TRANSFORMATION
 df.Gasto = df.Gasto.astype(float).apply(lambda x: round(x, 2))
 df.Ingreso = df.Ingreso.astype(float).apply(lambda x: round(x, 2))
