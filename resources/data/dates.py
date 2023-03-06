@@ -9,7 +9,7 @@ def get_dates():
   class Dates:
 
     current_date = datetime.now(tz)
-    previous_date = current_date - timedelta(1)
+    previous_date = current_date - timedelta(days=1)
     current_year = current_date.year
     previous_year = current_year - 1
     current_month = current_date.month
