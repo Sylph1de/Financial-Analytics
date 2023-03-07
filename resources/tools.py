@@ -1,3 +1,7 @@
+from os import getenv
+from cryptography.fernet import Fernet
+
+
 def cash(amount):
   if amount >= 0:
     return '$ %s' % round(amount, 2)
@@ -30,3 +34,10 @@ def append_row(container, row):
   except Exception as e:
     notify(container, 'error', body='Error, por favor intente de nuevo más tarde.', icon='❗')
     notify(container, 'error', body=e, icon='❗')
+
+
+def get_sheet_url(config, username):
+  sheet_bytes = config.get('credentials').get('usernames').get(username).get('sheet_url').encode('utf8')
+  key = getenv('FERNET_KEY')
+  fernet = Fernet(key)
+  return fernet.decrypt(sheet_bytes).decode('utf-8')

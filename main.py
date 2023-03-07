@@ -3,6 +3,8 @@ from warnings import filterwarnings
 
 import pandas as pd
 import streamlit as st
+import streamlit_authenticator as stauth
+import yaml
 from dotenv import load_dotenv
 
 from resources.add_data.add_data import get_add_data
@@ -33,24 +35,24 @@ st.set_page_config(
 upper_columns = st.columns(3)
 with upper_columns[0]:
     st.title(f':red[{title}]')
-if not st.session_state.get('logged'):
-    with st.columns(5)[0]:
-        name = st.text_input('Name', placeholder='Nombre', label_visibility='collapsed')
-        pin = st.text_input('Pin', placeholder='PIN', max_chars=4, label_visibility='collapsed', type='password')
-        columns = st.columns(2)
-        with columns[0]:
-            login_button = st.button('Iniciar sesión', use_container_width=True, type='primary')
-            if login_button:
-                st.session_state.name = name
-                st.session_state.pin = pin
-                st.session_state.logged = True
-else:
+with open('./config.yaml', 'r') as f:
+  config = yaml.load(f, Loader=yaml.loader.SafeLoader)
+  cookie = config.get('cookie')
+
+
+
+auth = stauth.Authenticate(
+  config.get('credentials'),
+  cookie.get('name'),
+  cookie.get('key'),
+  cookie.get('expiry_days')
+)
+with st.columns(3)[0]:
+    name, status, username = auth.login('Iniciar sesión', 'main')
+if status:
     with upper_columns[0]:
-        if st.button('Cerrar sesión', type='primary'):
-            st.session_state.pop('logged')
-            st.session_state.pop('name')
-            st.session_state.pop('pin')
-    sheet = get_sheet()
+        auth.logout('Cerrar sesión', 'main')
+    sheet = get_sheet(config, username)
     if sheet:
         records = sheet.get_all_records()
         df = pd.DataFrame(records)
@@ -95,18 +97,3 @@ else:
 
             with columns[1]:
                 get_add_data()
-
-        # with remove_data:
-        #     columns = st.columns([1, 1, 4, 2, 1.5, 1.5, 4])
-        #     for i, col in enumerate(df.columns, start=1):
-        #         with columns[i]:
-        #             st.markdown(col)
-        #     with columns[0]:
-        #         st.markdown('Acción')
-        #     for i, element in enumerate(df.to_dict('records')):
-        #         with columns[0]:
-        #             st.button('Delete')
-        #         with columns[1]:
-        #             st.markdown(element['Fecha'].strftime('%d-%b-%Y'))
-        #     with columns[-1]:
-        #         st.button('Eliminar registros seleccionados')

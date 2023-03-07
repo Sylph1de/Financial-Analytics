@@ -12,10 +12,6 @@ def get_add_data():
     columns = st.columns([1, 2])
     with columns[0]:
       date = st.date_input('Fecha').strftime('%d/%m/%Y')
-      # date = f'{str(date.day).zfill(2)}/{str(date.month).zfill(2)}/{str(date.year).zfill(2)}'
-      # for char in date:
-      #   if char not in ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '/']:
-      #     date = date.replace(char, '')
       form_data['Fecha'] = date
     with columns[1]:
       form_data['Concepto'] = st.text_input('Concepto', placeholder='Por favor introducir un concepto')

@@ -1,0 +1,31 @@
+credentials:
+  usernames:
+    ludmila:
+      email: email@gmail.com
+      name: Ludmila
+      password: $2b$12$nsulr7hh4QWfux2qIw.R4OuMbRXc0tzNfKDEliRM4K.EzSIWOk40e
+      sheet_url: gAAAAABkBqHZ67q6Mg6DHMuStJnxzpzqujdZGgOX4E1JcNNnlL25GaxIldyn1y1eHy9ojkts-LPUhxUs5yB-bwX-86lGze3khX8X3Y9Z18v6WWnwdx9NHXn_Tlw60oTt6zAqSw5siiHijSBmmvdxot1BOmz8JWUxbhDnZIQiTqnWNVj_HA-0RQrS5WzpB6c2bBaUjXU0Bt56
+    laura:
+      email: email@gmail.com
+      name: Laura
+      password: $2b$12$d9kaEdpHbeAsUKQaNxcd8u2ece5C7coSXW4wPUWHy1jc4N011LnFC
+      sheet_url: gAAAAABkBqHZBay2r8emzXChOiVUoYs6T9bhLSZcssCFwy_pDE5CV_u-bZO75Rjfl0RFRyShn278-t-Dk6zvNs1UHoeTKcNnR-a-dWRISsVUL73oaG7weW4V_dkZxDllrq2Z307tVTVa6VTG8TIbvuFMuTedpnVYKUSSi4wCX5l1AuaNKElSnmUEEGwoYGN9_HvrYQiRpt-R
+    franco:
+      email: email@gmail.com
+      name: Franco
+      password: $2b$12$gJp6OzhFddtJZxq8LXTAX.iCxnvJOQXp7zxHBsOc/.Kxg2d6UwJn.
+      sheet_url: gAAAAABkBqHZV3h_y4P7yz7vhlOxBKt84qGsxG5Nd_vLfIxu4yGTYgHCsUQRpPSdmhd--piIBrX2UBhxffLCAwJIKmVCc3RibI34SzKvkRM0TARd94Hjl5bxsIs1ybgOXDi9z6KmPcOO2nWTl9QvywyNCTczNBVFK5hiUS3SioBHfuW7EuexyXk474KsqTAu9AOQHbglSN_U
+    walter:
+      email: email@gmail.com
+      name: Walter
+      password: $2b$12$qgXSXUbR.ywnrlm5XwGCl.7WNQcAArxmvMGRILg2Cyegci3kE9Pd.
+      sheet_url: gAAAAABkBqHaXaE4TmsdId-Ug4feb8IsNBccxbkwJo99h6TCnM7_KKZTydx4SflQTMflA8cPA4Mb01Na0QcQEhK7hmvPeM4TbrLLZI32wNvFHmUPnAYojhT7Wde2AW911_8LS6pQzGFhkvvzKR6IDOQoJFQMjRygOHHe7GtQ1Pb-OVU8cIKkq0tpBlIfAp4rA232X5LH9_MI
+    test:
+      email: email@gmail.com
+      name: Test
+      password: $2b$12$y4CauaatCzTdCUpS6xZvE.OVugzZYguOEiQjmjbNVj69oFK9WjgJO
+      sheet_url: gAAAAABkBqHaZocdcA3ZKImBravJAHSgwCALFoeo_O8hPaP3iC5J25UqzbwevV6FU6LoMxkF5YPToVF4B8QO9nu6x8tkk3HIxppopOMOU2cgbVIq1I9_kENlrDcyaxRxU2wXHOsnhBVgKIXRTZl_WrMmd8ngO9xGK0YOkUCZWLCjJE3ly5dVKhJ8uH5GwDQWOYD6AMNjPwhr
+cookie:
+  expiry_days: 30
+  key: random_signature_key # Must be string
+  name: random_cookie_name
