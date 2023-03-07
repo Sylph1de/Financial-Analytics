@@ -96,4 +96,4 @@ if status:
             columns = st.columns([1, 3, 1])
 
             with columns[1]:
-                get_add_data()
+                get_add_data(config, username)
