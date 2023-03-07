@@ -10,14 +10,9 @@ def get_sheet():
   gcp_data = {key.replace('PROJECT_GCP_', '').lower(): environ.get(key) for key in gcp_keys}
   creds = ServiceAccountCredentials.from_json_keyfile_dict(gcp_data)
   client = gspread.authorize(creds)
+  name = st.session_state.name.upper()
   pin = st.session_state.pin
-  if pin == getenv('LAURA_PIN'):
-    sheet_url = getenv('LAURA_SHEET_URL')
-  elif pin == getenv('FRANCO_PIN'):
-    sheet_url = getenv('FRANCO_SHEET_URL')
-  elif pin == getenv('WALTER_PIN'):
-    sheet_url = getenv('WALTER_SHEET_URL')
-  elif pin == getenv('TEST_PIN'):
-    sheet_url = getenv('TEST_SHEET_URL')
-  sheet = client.open_by_url(sheet_url).sheet1
-  return sheet
+  if pin == getenv(name+'_PIN'):
+    sheet_url = getenv(name+'_SHEET_URL')
+    sheet = client.open_by_url(sheet_url).sheet1
+    return sheet
