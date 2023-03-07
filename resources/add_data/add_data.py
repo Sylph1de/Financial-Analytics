@@ -21,13 +21,12 @@ def get_add_data():
       form_data['Concepto'] = st.text_input('Concepto', placeholder='Por favor introducir un concepto')
     columns = st.columns(3)
     with columns[0]:
-      options = sorted(['Ocio', 'Transporte', 'Ingreso', 'Comida', 'Servicio', 'Otros', 'Salida'])
+      options = sorted(['Ocio', 'Transporte', 'Ingreso', 'Comida', 'Servicio', 'Otros', 'Salida', 'Auto', 'Animales', 'Monotributo', 'Alquiler', 'Deuda'])
       form_data['Tipo'] = st.selectbox(':blue[Tipo]', options=options)
     with columns[1]:
       form_data['Gasto'] = float(st.number_input(':red[Gasto]', step=.0))
     with columns[2]:
       form_data['Ingreso'] = float(st.number_input(':green[Ingreso]', step=.0))
-    with columns[0]:
       if st.form_submit_button('Agregar registro', type='primary', use_container_width=True):
         form_data = list(form_data.values())
         if not any([value == '' for value in form_data]):
