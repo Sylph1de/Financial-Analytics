@@ -22,10 +22,10 @@ def notify(container, mode: str, **kwargs):
     toast(**kwargs)
 
 
-def append_row(container, row):
+def append_row(config, username, container, row):
   from resources.utils import get_sheet
 
-  sheet = get_sheet()
+  sheet = get_sheet(config, username)
 
   try:
     sheet.append_row(row, value_input_option='USER_ENTERED')

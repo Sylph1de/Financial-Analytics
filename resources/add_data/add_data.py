@@ -3,7 +3,7 @@ import streamlit as st
 from resources.tools import append_row, notify
 
 
-def get_add_data():
+def get_add_data(config, username):
   form = st.form('add_data_form', clear_on_submit=True)
   container = st.container()
   with form:
@@ -26,6 +26,6 @@ def get_add_data():
       if st.form_submit_button('Agregar registro', type='primary', use_container_width=True):
         form_data = list(form_data.values())
         if not any([value == '' for value in form_data]):
-          append_row(container, form_data)
+          append_row(config, username, container, form_data)
         else:
           notify(container, 'info', body='Debe llenar todos los campos antes de poder crear el registro.', icon='💡')
