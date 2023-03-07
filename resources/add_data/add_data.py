@@ -7,7 +7,7 @@ def get_add_data():
   form = st.form('add_data_form', clear_on_submit=True)
   container = st.container()
   with form:
-    st.subheader(':violet[Nuevo registro]')
+    st.subheader(':red[Nuevo registro]')
     form_data = dict()
     columns = st.columns([1, 2])
     with columns[0]:

@@ -27,7 +27,7 @@ st.set_page_config(
         "Report a Bug": None,
     },
 )
-st.title(':violet[Finanzas]')
+st.title(':red[Finanzas]')
 with st.columns(5)[0]:
     st.session_state.name = st.text_input('Name', placeholder='Nombre', label_visibility='collapsed')
     st.session_state.pin = st.text_input('Pin', placeholder='PIN', max_chars=4, label_visibility='collapsed', type='password')
