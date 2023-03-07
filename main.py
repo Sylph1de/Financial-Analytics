@@ -27,11 +27,22 @@ st.set_page_config(
         "Report a Bug": None,
     },
 )
-st.title(':red[Finanzas]')
-with st.columns(5)[0]:
-    st.session_state.name = st.text_input('Name', placeholder='Nombre', label_visibility='collapsed')
-    st.session_state.pin = st.text_input('Pin', placeholder='PIN', max_chars=4, label_visibility='collapsed', type='password')
-if st.session_state.name and st.session_state.pin:
+upper_columns = st.columns(3)
+with upper_columns[0]:
+    st.title(':red[Finanzas]')
+if not st.session_state.get('logged'):
+    with st.columns(5)[0]:
+        st.session_state.name = st.text_input('Name', placeholder='Nombre', label_visibility='collapsed')
+        st.session_state.pin = st.text_input('Pin', placeholder='PIN', max_chars=4, label_visibility='collapsed', type='password')
+        columns = st.columns(2)
+        with columns[0]:
+            login_button = st.button('Iniciar sesión', use_container_width=True, type='primary')
+            if login_button:
+                st.session_state.logged = True
+else:
+    with upper_columns[-1]:
+        if st.button('Cerrar sesión', type='primary'):
+            st.session_state.logged = False
     sheet = get_sheet()
     if sheet:
         records = sheet.get_all_records()

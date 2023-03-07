@@ -41,10 +41,10 @@ def get_general(__df):
   with main_columns[1]:
       columns = st.columns(2)
       with columns[0]:
-          data = __df[Masks.current_yearly_mask][__df.Tipo != 'Ingreso']['Tipo']
+          data = __df[Masks.current_yearly_mask][__df.Tipo != 'Ingreso']
           if not data.empty:
               st.subheader('Porcentaje de gastos mensuales por tipo')
-              fig = px.pie(data, names='Tipo', height=250)
+              fig = px.pie(data, names='Tipo', labels='Tipo', values='Gasto', height=250)
               fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
               st.plotly_chart(fig, use_container_width=True)
 
