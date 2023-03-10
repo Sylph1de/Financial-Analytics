@@ -13,24 +13,23 @@ def get_general(__df):
   with main_columns[0]:
     st.subheader('Ganancias')
     columns = st.columns(2)
-    yearly_incomes = __df[Masks.current_yearly_mask].Ingreso.sum()
-    yearly_spent = __df[Masks.current_yearly_mask].Gasto.sum()
+    yearly = __df[Masks.current_yearly_mask]
+    yearly_incomes = yearly.groupby(yearly.Fecha.dt.month).Ingreso.sum().mean()
+    yearly_spent = yearly.groupby(yearly.Fecha.dt.month).Gasto.sum().mean()
     yearly_earnings = yearly_incomes - yearly_spent
     with columns[0]:
         st.metric(':%s[__Ganancia anual (%s)__]' % ('green' if yearly_earnings >= 0 else 'red', Dates.current_year), cash(yearly_earnings))
 
-    monthly_incomes = __df[Masks.current_monthly_mask].Ingreso.sum()
-    monthly_spent = __df[Masks.current_monthly_mask].Gasto.sum()
+    monthly = __df[Masks.current_monthly_mask]
+    monthly_incomes = monthly.Ingreso.sum()
+    monthly_spent = monthly.Gasto.sum()
     monthly_earnings = monthly_incomes - monthly_spent
     with columns[1]:
         st.metric(':%s[__Ganancia mensual (%s)__]' % ('green' if monthly_earnings >= 0 else 'red', month(Dates.current_month)), cash(monthly_earnings))
     st.subheader('Promedios')
 
-    current_monthly_income_mean = __df[Masks.current_yearly_mask]
-    current_monthly_income_mean = current_monthly_income_mean.groupby(current_monthly_income_mean.Fecha.dt.month).Ingreso.sum().mean()
-
-    current_monthly_spent_mean = __df[Masks.current_yearly_mask]
-    current_monthly_spent_mean = current_monthly_spent_mean.groupby(current_monthly_spent_mean.Fecha.dt.month).Gasto.sum().mean()
+    current_monthly_income_mean = yearly.groupby(yearly.Fecha.dt.month).Ingreso.sum().mean()
+    current_monthly_spent_mean = yearly.groupby(yearly.Fecha.dt.month).Gasto.sum().mean()
 
     columns = st.columns(2)
     with columns[0]:
@@ -41,7 +40,7 @@ def get_general(__df):
   with main_columns[1]:
       columns = st.columns(2)
       with columns[0]:
-          data = __df[Masks.current_yearly_mask][__df.Tipo != 'Ingreso']
+          data = yearly[__df.Tipo != 'Ingreso']
           if not data.empty:
               st.subheader('Porcentaje de gastos mensuales por tipo')
               fig = px.pie(data, names='Tipo', labels='Tipo', values='Gasto', height=250)
