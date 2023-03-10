@@ -34,7 +34,7 @@ st.set_page_config(
 )
 upper_columns = st.columns(3)
 with upper_columns[0]:
-    st.title(f':red[{title}]')
+    st.title(f':violet[{title}]')
 with open('./config.yaml', 'r') as f:
   config = yaml.load(f, Loader=yaml.loader.SafeLoader)
   cookie = config.get('cookie')

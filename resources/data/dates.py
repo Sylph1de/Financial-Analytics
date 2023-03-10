@@ -4,10 +4,9 @@ from zoneinfo import ZoneInfo
 
 
 def get_dates():
-  tz = ZoneInfo('America/Buenos_Aires')
 
   class Dates:
-
+    tz = ZoneInfo('America/Buenos_Aires')
     current_date = datetime.now(tz=tz)
     previous_date = current_date - timedelta(days=1)
     current_year = current_date.year

@@ -40,7 +40,7 @@ def get_general(__df):
   with main_columns[1]:
       columns = st.columns(2)
       with columns[0]:
-          data = yearly[__df.Tipo != 'Ingreso']
+          data = yearly[yearly.Tipo != 'Ingreso']
           if not data.empty:
               st.subheader('Porcentaje de gastos mensuales por tipo')
               fig = px.pie(data, names='Tipo', labels='Tipo', values='Gasto', height=250)
@@ -51,7 +51,7 @@ def get_general(__df):
           data = __df.drop(__df[~Masks.current_yearly_mask].index)
           if not data.empty:
               data.Fecha = data.Fecha.apply(lambda x: month(x.month))
-              data = data.groupby(['Fecha']).Ingreso.sum()
+              data = data.groupby(data.Fecha).Ingreso.sum()
               fig = px.bar(data, x=data.index, y=data.values, color=data.index, labels={'y': 'Ingreso', 'Fecha': 'Mes'}, height=250)
 
               st.subheader('Ingresos mensuales (%s)' % Dates.current_year)
