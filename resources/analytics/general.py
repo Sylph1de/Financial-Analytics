@@ -14,8 +14,8 @@ def get_general(__df):
     st.subheader('Ganancias')
     columns = st.columns(2)
     yearly = __df[Masks.current_yearly_mask]
-    yearly_incomes = yearly.groupby(yearly.Fecha.dt.month).Ingreso.sum().mean()
-    yearly_spent = yearly.groupby(yearly.Fecha.dt.month).Gasto.sum().mean()
+    yearly_incomes = yearly.Ingreso.sum()
+    yearly_spent = yearly.Gasto.sum()
     yearly_earnings = yearly_incomes - yearly_spent
     with columns[0]:
         st.metric(':%s[__Ganancia anual (%s)__]' % ('green' if yearly_earnings >= 0 else 'red', Dates.current_year), cash(yearly_earnings))
