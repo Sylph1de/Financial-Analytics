@@ -1,13 +1,14 @@
 from datetime import datetime, timedelta
 
-from zoneinfo import ZoneInfo
+from pytz import all_timezones, timezone
 
 
 def get_dates():
 
   class Dates:
-    tz = ZoneInfo('America/Buenos_Aires')
-    current_date = datetime.now(tz=tz)
+    arg_tz = list(filter(lambda x: 'Buenos_Aires' in x, all_timezones)).pop(0)
+    ARG = timezone(arg_tz)
+    current_date = datetime.now(tz=ARG)
     previous_date = current_date - timedelta(days=1)
     current_year = current_date.year
     previous_year = current_year - 1
