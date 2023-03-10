@@ -21,6 +21,7 @@ filterwarnings('ignore')
 # ? CONFIG
 title = 'Finanzas'
 name = st.session_state.get('name')
+sheet_url = st.session_state.get('sheet_url')
 if name:
     title += ' (%s)' % name
 st.set_page_config(
@@ -30,6 +31,7 @@ st.set_page_config(
     menu_items={
         "Get help": None,
         "Report a Bug": None,
+        "About": sheet_url
     },
 )
 upper_columns = st.columns(3)

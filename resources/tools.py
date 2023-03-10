@@ -1,4 +1,6 @@
 from os import getenv
+
+import streamlit as st
 from cryptography.fernet import Fernet
 
 
@@ -15,7 +17,6 @@ def month(value):
 
 
 def notify(container, mode: str, **kwargs):
-  import streamlit as st
 
   toast = eval('st.'+mode)
   with container:
@@ -40,4 +41,6 @@ def get_sheet_url(config, username):
   sheet_bytes = config.get('credentials').get('usernames').get(username).get('sheet_url').encode('utf8')
   key = getenv('FERNET_KEY')
   fernet = Fernet(key)
-  return fernet.decrypt(sheet_bytes).decode('utf-8')
+  sheet_url = fernet.decrypt(sheet_bytes).decode('utf-8')
+  st.session_state.sheet_url = sheet_url
+  return sheet_url
