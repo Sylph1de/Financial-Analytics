@@ -40,10 +40,11 @@ def get_general(__df):
   with main_columns[1]:
       columns = st.columns(2)
       with columns[0]:
-          data = yearly[yearly.Tipo != 'Ingreso']
+          data = yearly[yearly.Tipo.isin(['Ingreso', 'Ingreso pasivo']) == False]
+          data['GastoCash'] = data.Gasto.apply(cash)
           if not data.empty:
               st.subheader('Porcentaje de gastos mensuales por tipo')
-              fig = px.pie(data, names='Tipo', labels='Tipo', values='Gasto', height=250)
+              fig = px.pie(data, names='Tipo', labels='Tipo', values='Gasto', height=250, color_discrete_sequence=px.colors.sequential.Reds_r)
               fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))
               st.plotly_chart(fig, use_container_width=True)
 
@@ -52,7 +53,7 @@ def get_general(__df):
           if not data.empty:
               data.Fecha = data.Fecha.apply(lambda x: month(x.month))
               data = data.groupby(data.Fecha).Ingreso.sum()
-              fig = px.bar(data, x=data.index, y=data.values, color=data.index, labels={'y': 'Ingreso', 'Fecha': 'Mes'}, height=250)
+              fig = px.bar(data, x=data.index, y=data.values, color=data.index, labels={'y': 'Ingreso', 'Fecha': 'Mes'}, height=250, color_discrete_sequence=px.colors.sequential.Greens_r)
 
               st.subheader('Ingresos mensuales (%s)' % Dates.current_year)
               fig.update_layout(margin=dict(l=20, r=20, t=20, b=20))

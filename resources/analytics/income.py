@@ -28,12 +28,12 @@ def get_income(parsed_df):
   with columns[0]:
     st.subheader(':green[Anual]')
     st.metric('Año anterior (%s)' % Dates.previous_year, cash(previous_year_income))
-    st.metric('Este año (%s)' % Dates.current_year, cash(current_year_income), delta=cash(delta_year_income))
+    st.metric('Este año (%s)' % Dates.current_year, cash(current_year_income), delta=cash(delta_year_income, mode='delta'))
   with columns[1]:
     st.subheader(':green[Mensual]')
     st.metric('Mes anterior (%s)' % month(Dates.previous_month), cash(previous_month_income))
-    st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_income), delta=cash(delta_month_income))
+    st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_income), delta=cash(delta_month_income, mode='delta'))
   with columns[2]:
     st.subheader(':green[Diario]')
     st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y'), cash(previous_day_income))
-    st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_income), delta=cash(delta_day_income))
+    st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_income), delta=cash(delta_day_income, mode='delta'))

@@ -29,12 +29,12 @@ def get_ants(__df):
   with columns[0]:
       st.subheader(':red[Anual]')
       st.metric('Año anterior (%s)' % Dates.previous_year, cash(previous_year_ant_spending))
-      st.metric('Este año (%s)' % Dates.current_year, cash(current_year_ant_spending), delta=cash(delta_year_ant_spending), delta_color='inverse')
+      st.metric('Este año (%s)' % Dates.current_year, cash(current_year_ant_spending), delta=cash(delta_year_ant_spending, mode='delta'), delta_color='inverse')
   with columns[1]:
       st.subheader(':red[Mensual]')
       st.metric('Mes anterior (%s)' % month(Dates.previous_month), cash(previous_month_ant_spending))
-      st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_ant_spending), delta=cash(delta_month_ant_spending), delta_color='inverse')
+      st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_ant_spending), delta=cash(delta_month_ant_spending, mode='delta'), delta_color='inverse')
   with columns[2]:
       st.subheader(':red[Diario]')
       st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y'), cash(previous_day_ant_spending))
-      st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_ant_spending), delta=cash(delta_day_ant_spending), delta_color='inverse')
+      st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_ant_spending), delta=cash(delta_day_ant_spending, mode='delta'), delta_color='inverse')

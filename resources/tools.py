@@ -19,7 +19,9 @@ def human_format(number):
     return '%.2f%s' % (number / k**magnitude, units[magnitude])
   return number
 
-def cash(amount):
+def cash(amount, mode=None):
+  if mode == 'delta' and amount == 0:
+    return None
   if amount >= 0:
     return '$ %s' % human_format(amount)
   else:
