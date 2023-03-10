@@ -13,7 +13,7 @@ from math import log, floor
 def human_format(number):
   number = int(number) if number % 1 == 0 else round(number, 2)
   k = 1000.0
-  if number > k:
+  if number >= k:
     units = ['', 'K', 'M', 'G', 'T', 'P']
     magnitude = int(floor(log(number, k)))
     return '%.2f%s' % (number / k**magnitude, units[magnitude])
