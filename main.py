@@ -49,7 +49,8 @@ auth = stauth.Authenticate(
   cookie.get('key'),
   cookie.get('expiry_days')
 )
-with st.columns(3)[0]:
+main_columns = st.columns(3)
+with main_columns[0]:
     name, status, username = auth.login('Iniciar sesión', 'main')
 if status:
     with upper_columns[0]:
@@ -99,3 +100,6 @@ if status:
 
             with columns[1]:
                 get_add_data(config, username)
+elif status == False:
+    with main_columns[0]:
+        st.error('Nombre/Contraseña incorrecto', icon='❌')

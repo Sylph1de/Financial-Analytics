@@ -2,7 +2,10 @@ from os import getenv
 
 import streamlit as st
 from cryptography.fernet import Fernet
+from streamlit_authenticator import Hasher
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def cash(amount):
   if amount >= 0:
@@ -38,9 +41,19 @@ def append_row(config, username, container, row):
 
 
 def get_sheet_url(config, username):
-  sheet_bytes = config.get('credentials').get('usernames').get(username).get('sheet_url').encode('utf8')
+  sheet_bytes = config.get('credentials').get('usernames').get(username).get('sheet_url').encode('utf-8')
   key = getenv('FERNET_KEY')
   fernet = Fernet(key)
   sheet_url = fernet.decrypt(sheet_bytes).decode('utf-8')
   st.session_state.sheet_url = sheet_url
   return sheet_url
+
+def encrypt_sheet_url(url):
+  key = getenv('FERNET_KEY')
+  fernet = Fernet(key)
+  encrypted_sheet_url = fernet.encrypt(url.encode('utf-8')).decode('utf-8')
+  return encrypted_sheet_url
+
+def hash_pwd(pwd):
+  hashed_pwd = Hasher([pwd]).generate().pop(0)
+  return hashed_pwd

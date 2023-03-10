@@ -20,6 +20,11 @@ credentials:
       name: Walter
       password: $2b$12$qgXSXUbR.ywnrlm5XwGCl.7WNQcAArxmvMGRILg2Cyegci3kE9Pd.
       sheet_url: gAAAAABkBqHaXaE4TmsdId-Ug4feb8IsNBccxbkwJo99h6TCnM7_KKZTydx4SflQTMflA8cPA4Mb01Na0QcQEhK7hmvPeM4TbrLLZI32wNvFHmUPnAYojhT7Wde2AW911_8LS6pQzGFhkvvzKR6IDOQoJFQMjRygOHHe7GtQ1Pb-OVU8cIKkq0tpBlIfAp4rA232X5LH9_MI
+    walter:
+      email: email@gmail.com
+      name: Gian
+      password: $2b$12$vRhJVQY6Sknp1qkfu4fDHe.0eKZY01gfomE3s/vU9LWNpkSwfsLGq
+      sheet_url: gAAAAABkC6ZlmyMacCp-DEnHAfp1UShysL5nW6UJ4e8YdDGsWi7ZQ77XAepXK6wGHNDXHB6l6hIKkKmRwrFtOLa5gwf5FltcGp6VbGqaHey26Y_bR8WEuk73GPe0XUAIB2HWu0zvAs5w4z7ybHxQWCLFJz4tvT8Ku6C7FIYy1Ykxz-Uv30__JzwspImq_HLlFnL7t20dOJDZ
     test:
       email: email@gmail.com
       name: Test
