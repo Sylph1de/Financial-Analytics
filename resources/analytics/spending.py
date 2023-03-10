@@ -36,5 +36,5 @@ def get_spending(parsed_df):
     st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_spent), delta=cash(delta_month_spent, mode='delta'), delta_color='inverse')
   with columns[2]:
     st.subheader(':red[Diario]')
-    st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y %HH:%MM'), cash(previous_day_spent))
+    st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y'), cash(previous_day_spent))
     st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_spent), delta=cash(delta_day_spent, mode='delta'), delta_color='inverse')
