@@ -23,7 +23,7 @@ def get_spending(parsed_df):
   # FIXME
   previous_day_spent = parsed_df[Masks.previous_daily_mask].Gasto.sum()
   current_day_spent = parsed_df[Masks.current_daily_mask].Gasto.sum()
-  delta_day_spent = previous_day_spent - current_day_spent
+  delta_day_spent = current_day_spent - previous_day_spent
 
   columns = st.columns(3)
   with columns[0]:
@@ -36,5 +36,5 @@ def get_spending(parsed_df):
     st.metric('Este mes (%s)' % month(Dates.current_month), cash(current_month_spent), delta=cash(delta_month_spent), delta_color='inverse')
   with columns[2]:
     st.subheader(':red[Diario]')
-    st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y'), cash(previous_month_spent))
-    st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_month_spent), delta=cash(delta_day_spent), delta_color='inverse')
+    st.metric('Ayer (%s)' % Dates.previous_date.strftime('%d-%b-%Y'), cash(previous_day_spent))
+    st.metric('Hoy (%s)' % Dates.current_date.strftime('%d-%b-%Y'), cash(current_day_spent), delta=cash(delta_day_spent), delta_color='inverse')
