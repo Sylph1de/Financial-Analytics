@@ -89,7 +89,7 @@ if status:
                 with columns[2]:
                     with st.expander('**Ingresos**', expanded=True):
                         get_income(df)
-            except Exception:
+            except Exception as e:
                 st.info('Aún no tenés los suficientes registros para poder hacer un análisis', icon='😔')
 
         with full_view:

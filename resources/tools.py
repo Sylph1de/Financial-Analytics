@@ -7,11 +7,23 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from math import log, floor
+
+
+def human_format(number):
+  number = int(number) if number % 1 == 0 else round(number, 2)
+  k = 1000.0
+  if number > k:
+    units = ['', 'K', 'M', 'G', 'T', 'P']
+    magnitude = int(floor(log(number, k)))
+    return '%.2f%s' % (number / k**magnitude, units[magnitude])
+  return number
+
 def cash(amount):
   if amount >= 0:
-    return '$ %s' % round(amount, 2)
+    return '$ %s' % human_format(amount)
   else:
-    return '-$ %s' % round(amount*-1, 2)
+    return '-$ %s' % human_format(amount*-1)
 
 
 def month(value):
