@@ -17,7 +17,7 @@ def get_add_data(config, username):
       form_data['Concepto'] = st.text_input('Concepto', placeholder='Por favor introducir un concepto')
     columns = st.columns(3)
     with columns[0]:
-      options = sorted(['Ocio', 'Transporte', 'Ingreso', 'Comida', 'Servicio', 'Otros', 'Salida', 'Auto', 'Animales', 'Monotributo', 'Alquiler', 'Deuda'])
+      options = sorted(['Ocio', 'Transporte', 'Ingreso', 'Comida', 'Servicio', 'Otros', 'Salida', 'Auto', 'Animales', 'Monotributo', 'Alquiler', 'Deuda', 'Salud', 'Ingresos pasivos'])
       form_data['Tipo'] = st.selectbox(':blue[Tipo]', options=options)
     with columns[1]:
       form_data['Gasto'] = float(st.number_input(':red[Gasto]', step=.0))
